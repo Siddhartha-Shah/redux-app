@@ -1,24 +1,18 @@
 import React from 'react'
 import { useReducer } from 'react'
-const reducer=(state,action)=>{
-    if(action.type==="INCREMENT"){
-        return state+1;
-    }else if(action.type==="DECREMENT"){
-        return state-1;
-    }else{
-        return state;
-    }
+const initialState=0;
+const reducer=(action,state)=>{
+    if(action.type==="INCREMENT") return state+1;
+    if(action.type==="DECFEMENT") return state-1;
+    else return state;
 }
-
 const LearnReducer = () => {
-    const initialState=0;
-
-    const[state,dispatch]=useReducer(reducer,initialState);
+    const[state,dispatch]=useReducer(reducer,initialState)
   return (
     <div>
         <h1>{state}</h1>
-        <button onClick={()=>dispatch({type:"INCREMENT"})}>INCREMENT</button>
-        <button onClick={()=>dispatch({type:"DECREMENT"})}>DECREMENT</button>
+        <button onClick={dispatch({type:"INCREMENT"})}>ADD</button>
+        <button onClick={dispatch({type:"DECREMENT"})}>LESS</button>
     </div>
   )
 }
